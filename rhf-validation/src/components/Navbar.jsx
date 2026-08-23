@@ -1,4 +1,4 @@
-const Navbar = ({setToggle}) => {
+const Navbar = ({setToggle, setUpUser}) => {
   return (
     <div className="py-3 px-6 bg-black rounded flex justify-between items-center">
       <div className="h-15 w-15 rounded-full">
@@ -9,7 +9,10 @@ const Navbar = ({setToggle}) => {
         <p className="cursor-pointer">ABOUT</p>
         <p className="cursor-pointer">CONTACT</p>
       </div>
-      <button onClick={() => setToggle(prev => !prev)} className="py-2 px-3 text-lg cursor-pointer font-medium rounded-xl bg-blue-700 text-white">Create user</button>
+      <button onClick={() => {
+        setToggle(prev => !prev);
+        setUpUser({})
+      }} className="py-2 px-3 text-lg cursor-pointer font-medium rounded-xl bg-blue-700 text-white">Create user</button>
     </div>
   )
 }
