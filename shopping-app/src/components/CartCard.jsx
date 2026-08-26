@@ -35,6 +35,7 @@ const CartProductCard = ({ product, onRemove }) => {
             <button className="px-3 py-1.5 text-lg text-gray-600 hover:bg-gray-100">
               −
             </button>
+
             <span className="px-4 py-1.5 font-medium">
               {product.quantity}
             </span>

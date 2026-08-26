@@ -2,15 +2,17 @@ import { useContext } from "react"
 import { MyContext } from "../context/MyContext"
 
 const Navbar = () => {
-  let {setIsCartOpen} = useContext(MyContext);
+
+  let {setToggle} = useContext(MyContext);
+
   return (
-    <div className="py-3 px-6 bg-black rounded-4xl flex justify-between items-center">
+    <div className="py-3 px-6 bg-black rounded-b-xl border border-white flex justify-between items-center">
       <div className="h-15 w-15 rounded-full">
         <img className="h-full w-full object-cover rounded-full" src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGVvcGxlfGVufDB8fDB8fHww" alt="" />
       </div>
-      <div className="flex justify-between font-medium w-[10%] text-white items-center">
-        <p onClick={() => {setIsCartOpen(false)}} className="cursor-pointer">HOME</p>
-        <p onClick={() => {setIsCartOpen(true)}} className="cursor-pointer">CART</p>
+      <div className="flex justify-between font-medium w-[10%] text-white">
+        <p onClick={() => setToggle(false)} className="cursor-pointer">HOME</p>
+        <p onClick={() => setToggle(true)} className="cursor-pointer">CART</p>
       </div>
       <button className="py-2 px-3 text-lg cursor-pointer font-medium rounded-xl bg-blue-700 text-white">Create user</button>
     </div>

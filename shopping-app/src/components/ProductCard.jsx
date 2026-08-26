@@ -1,12 +1,14 @@
 import { useContext } from "react";
 import { MyContext } from "../context/MyContext";
 
-const ProductCard = ({product, isInCart}) => {
-    let { setCartItems, incrementQuantity, decrementQuantity, cartItems} = useContext(MyContext);
-    const addToCart = () => {
-        setCartItems((val) => [...val, {...product, quantity: 1}]);
-        alert(`${product.category} added into cart`);
-    }
+const ProductCard = ({ product, item }) => {
+
+  let {setCartItems, incrementProduct, decrementProduct} = useContext(MyContext);
+  const addToCart = () => {
+    setCartItems((prev) => [...prev, {...product, quantity: 1}]);
+    alert(`${product.category} added into cart`);
+  }
+
   return (
     <div className="w-full max-w-sm overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
       
@@ -54,24 +56,26 @@ const ProductCard = ({product, isInCart}) => {
         {/* Price + Button */}
         <div className="mt-5 flex items-center justify-between">
           <span className="text-2xl font-bold text-gray-900">
-            ${product.price}
+            ${item ? product.price * item.quantity : product.price}
           </span>
-          {isInCart ? (<div className="flex items-center rounded-lg border border-gray-300">
-            <button onClick={() => decrementQuantity(product.id)} className="px-3 py-1.5 text-lg text-gray-600 hover:bg-gray-100">
-              −
-            </button>
-            <span className="px-4 py-1.5 font-medium">
-              {isInCart.quantity}
-            </span>
-            <button onClick={() => {incrementQuantity(product.id)}} className="px-3 py-1.5 text-lg text-gray-600 hover:bg-gray-100">
-              +
-            </button>
-            </div>
-            ): (
-              <button onClick={addToCart} className="rounded-lg bg-gray-900 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-blue-600 active:scale-95">
+          {
+            item ? (
+            <div className="flex items-center rounded-lg border border-gray-300">
+              <button onClick={() => decrementProduct(product.id)} className="px-3 py-1.5 text-lg text-gray-600 hover:bg-gray-100">
+                −
+              </button>
+
+              <span className="px-4 py-1.5 font-medium">
+                {item.quantity}
+              </span>
+
+              <button onClick={() => incrementProduct(product.id)} className="px-3 py-1.5 text-lg text-gray-600 hover:bg-gray-100">
+                +
+              </button>
+            </div>) : (<button onClick={addToCart} className="rounded-lg bg-gray-900 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-blue-600 active:scale-95">
             Add to Cart
-          </button>
-          )}
+          </button>)
+          }
           
         </div>
       </div>
