@@ -3,7 +3,7 @@ import AppRoutes from "./routes/AppRoutes"
 
 const App = () => {
   return (
-    <div className="bg-black text-white h-screen">
+    <div className="">
       <Navbar/>
       <AppRoutes/>
     </div>
