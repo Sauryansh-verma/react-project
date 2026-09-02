@@ -5,6 +5,9 @@ import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
 import PublicProtected from './PublicProtected';
 import AuthProtected from './AuthProtected'
+import Home from '../pages/Home'
+import Users from '../pages/Users'
+import Products from '../pages/Products'
 
 const AppRoutes = () => {
     const router = createBrowserRouter([
@@ -34,7 +37,21 @@ const AppRoutes = () => {
             children: [
                 {
                     path: '',
-                    element: <MainLayout/>
+                    element: <MainLayout/>,
+                    children: [
+                        {
+                            path: '',
+                            element: <Home/>
+                        },
+                        {
+                            path: 'users',
+                            element: <Users/>
+                        },
+                        {
+                            path: 'products',
+                            element: <Products/>
+                        }
+                    ]
                 }
             ]
         }
